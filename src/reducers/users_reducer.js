@@ -1,4 +1,5 @@
-export default (state=[], action) => {
+export default (state={}, action) => {
+  debugger
   switch (action.type) {
     case "SIGN_UP":
       return action.payload.data

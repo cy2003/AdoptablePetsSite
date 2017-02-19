@@ -19,7 +19,7 @@ export const createUser = (user) => {
       return innerResponse
     }
     else {
-      browserHistory.push(`/`)
+      browserHistory.push(`/pets`)
       return innerResponse
     }
   })
@@ -30,18 +30,20 @@ export const createUser = (user) => {
 }
 
 export const signinUser = (user) => {
+
   let response = axios.post('signin', user).then((innerResponse) => {
     sessionStorage.setItem('jwt', innerResponse.data.jwt)
     //innerResponse.data => {user: 1, is_rescue: true, jwt: "shfdlhfl"}
     //find the id and insert it
     var id = innerResponse.data.user
     var rescue_id = innerResponse.data.rescue_id
+
     if (innerResponse.data.is_rescue === true){
       browserHistory.push(`/rescues/${rescue_id}`)
       return innerResponse
     }
     else {
-      browserHistory.push(`/`)
+      browserHistory.push(`/pets`)
       return innerResponse
     }
   })
@@ -73,9 +75,19 @@ export const showRescuePets = function(id){
   }
 }
 
-export const createNewPet = function(){
-  let response = axios.get(`/rescues/`)
+export const showPets = function(){
+  let response = axios.get(`/pets`).then((innerResponse) => {
+    return innerResponse
+  })
+  return {
+    type: "PETS_SHOW",
+    payload: response
+  }
 }
+
+// export const createNewPet = function(){
+//   let response = axios.get(`/rescues/`)
+// }
 
 // create action for rescue sign up
 // send the info to rails

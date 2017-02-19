@@ -31,12 +31,11 @@ class RescueShow extends Component {
   render(){
 
     if (!this.props.rescue.pets) {
-      return (<div>Loading</div>)
+      return (<div>Loading...</div>)
     }
     else {
       return (
         <div>
-          <h2>Hello</h2>
           <h3>{ this.props.rescue.organization_name }</h3>
           <div>
             <div>
@@ -57,6 +56,7 @@ class RescueShow extends Component {
             <form onSubmit={this.handleSubmit.bind(this)}>
               <input type='submit' onChange={this.handleInputChange.bind(this)} value="Create"/>
             </form>
+
             <br></br>
           <h3>Update New Pet</h3>
             <form onSubmit={this.handleSubmit.bind(this)}>
