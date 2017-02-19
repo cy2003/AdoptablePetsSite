@@ -71,6 +71,7 @@ export const showRescuePets = function(id){
   let response = axios.get(`/rescues/${id}`).then((innerResponse) => {
     return innerResponse
   })
+  debugger
   return {
     type: "RESCUE_SHOW",
     payload: response
