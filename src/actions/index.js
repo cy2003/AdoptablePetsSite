@@ -37,13 +37,13 @@ export const signinUser = (user) => {
     //find the id and insert it
     var id = innerResponse.data.user
     var rescue_id = innerResponse.data.rescue_id
-
+    var adopter_id = innerResponse.date.adopter_id
     if (innerResponse.data.is_rescue === true){
       browserHistory.push(`/rescues/${rescue_id}`)
       return innerResponse
     }
     else {
-      browserHistory.push(`/pets`)
+      browserHistory.push(`/adopters/${adopter_id}`)
       return innerResponse
     }
   })
