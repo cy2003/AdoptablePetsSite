@@ -38,12 +38,13 @@ export const signinUser = (user) => {
     var id = innerResponse.data.user
     var rescue_id = innerResponse.data.rescue_id
     var adopter_id = innerResponse.data.adopter_id
+    debugger
     if (innerResponse.data.is_rescue === true){
       browserHistory.push(`/rescues/${rescue_id}`)
       return innerResponse
     }
     else {
-      browserHistory.push(`/adopters/${adopter_id}`)
+      browserHistory.push(`/pets`)
       return innerResponse
     }
   })
@@ -77,13 +78,13 @@ export const showRescuePets = function(id){
 }
 
 export const showPets = function(){
-  debugger
+  
   let response = axios.get(`/pets`).then((innerResponse) => {
     return innerResponse
   })
   debugger
   return {
-    type: "PETS_SHOW",
+    type: "PET_SHOW",
     payload: response
   }
 }

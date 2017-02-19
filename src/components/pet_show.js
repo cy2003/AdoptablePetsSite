@@ -11,16 +11,17 @@ class PetShow extends Component {
 
   componentDidMount(){
     debugger
-    this.showPets()
+    this.props.showPets()
   }
 
   render(){
-    <h2>Hello</h2>
 
+    debugger
     if (!this.props.pets) {
       return (<div>Loading...</div>)
     }
     else {
+      debugger
       return (
         <div>
           <h3>Pets Available For Adoption</h3>
@@ -47,7 +48,7 @@ class PetShow extends Component {
 
 // state is the state of the store
   function mapStateToProps(state){
-    return {pet: state.pet}
+    return {pets: state.pets}
   }
 //'pet:' is the name of the prop
 

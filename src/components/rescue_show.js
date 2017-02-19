@@ -11,22 +11,22 @@ class RescueShow extends Component {
   }
 
   componentDidMount(){
-    debugger
+
     const id = parseInt(this.props.params.id)
     this.props.showRescuePets(id)
   }
 
-  // handleSubmit(event){
-  //   event.preventDefault()
-  //   this.props.addPet( this.state.pet )
-  //   this.setState({pet: ''})
-  // }
-  //
-  // handleInputChange(event){
-  //   this.setState({
-  //     pet: event.target.value
-  //   })
-  // }
+  handleSubmit(event){
+    event.preventDefault()
+    this.props.addPet( this.state.pet )
+    this.setState({pet: ''})
+  }
+
+  handleInputChange(event){
+    this.setState({
+      pet: event.target.value
+    })
+  }
 
 
   render(){
@@ -59,10 +59,7 @@ class RescueShow extends Component {
             </form>
 
             <br></br>
-          <h3>Update New Pet</h3>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <input type='submit' onChange={this.handleInputChange.bind(this)} value="Update"/>
-            </form>
+
         </div>
 
       )}

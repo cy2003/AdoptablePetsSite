@@ -15,7 +15,7 @@ export default(
     <Route path="signin" component={UserSignIn}/>
     <Route path="rescue_sign_up" component={RescueSignUp}/>
     <Route path="rescues/:id" component={RescueShow}/>
-    <Route path="adopters/:id" component={PetShow}/>
+    <Route path="pets" component={PetShow}/>
   </Route>
 )
 
