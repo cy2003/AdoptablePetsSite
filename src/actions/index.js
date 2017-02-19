@@ -30,14 +30,15 @@ export const createUser = (user) => {
 }
 
 export const signinUser = (user) => {
-
+  debugger
   let response = axios.post('signin', user).then((innerResponse) => {
     sessionStorage.setItem('jwt', innerResponse.data.jwt)
     //innerResponse.data => {user: 1, is_rescue: true, jwt: "shfdlhfl"}
     //find the id and insert it
+    debugger
     var id = innerResponse.data.user
     var rescue_id = innerResponse.data.rescue_id
-    var adopter_id = innerResponse.date.adopter_id
+    var adopter_id = innerResponse.data.adopter_id
     if (innerResponse.data.is_rescue === true){
       browserHistory.push(`/rescues/${rescue_id}`)
       return innerResponse
@@ -47,6 +48,7 @@ export const signinUser = (user) => {
       return innerResponse
     }
   })
+  debugger
   return {
     type: "SIGN_IN",
     payload: response
