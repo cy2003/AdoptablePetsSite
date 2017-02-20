@@ -7,6 +7,7 @@ import RescueSignUp from './components/rescue_sign_up'
 import Auth from './auth/authenticator'
 import RescueShow from './components/rescue_show'
 import PetsShow from './components/pets_show'
+import OnePetShow from './components/one_pet_show'
 
 
 export default(
@@ -16,6 +17,7 @@ export default(
     <Route path="rescue_sign_up" component={RescueSignUp}/>
     <Route path="rescues/:id" component={RescueShow}/>
     <Route path="pets" component={PetsShow}/>
+    <Route path="pets/:id" component={OnePetShow}/>
   </Route>
 )
 

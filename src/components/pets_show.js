@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {showPets} from '../actions/index'
+import {showOnePet} from '../actions/index'
 
 class PetsShow extends Component {
   constructor(){
@@ -13,6 +14,9 @@ class PetsShow extends Component {
     this.props.showPets()
   }
 
+  handleClick(id){
+    this.props.showOnePet(id)
+  }
 
   render(){
 
@@ -21,18 +25,17 @@ class PetsShow extends Component {
       return (<div>Loading...</div>)
     }
     else {
-      
+
       return (
         <div>
           <h3>Pets Available For Adoption</h3>
           <div>
             {this.props.pets.map((pet) => {
               return (
-                <div>
-                  <img src={`${pet.picture_url}`} height={400} width={390} key={pet.id}/>
-                  <div>Name: {pet.name}</div>
+                <div key={pet.id}>
+                  <img src={`${pet.picture_url}`} height={300} onClick={this.handleClick.bind(this, pet.id)}/>
+                  <div>Meet {pet.name}</div>
                   <div>Sex: {pet.sex}</div>
-                  <div>Age: {pet.age}</div>
                   <br></br>
                   <br></br>
                 </div>
@@ -53,7 +56,7 @@ class PetsShow extends Component {
 //'pet:' is the name of the prop
 
   function mapDispatchToProps(dispatch){
-    return bindActionCreators({showPets}, dispatch)
+    return bindActionCreators({showPets, showOnePet}, dispatch)
   }
 
 

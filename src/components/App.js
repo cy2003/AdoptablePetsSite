@@ -13,16 +13,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-          <h2>Welcome to Adoptable Pets!</h2>
           <ul>
+            <h2>Welcome to Adoptable Pets!</h2>
+            <h4>Follow your favorite pets</h4>
             <Link to="/"><li>Home</li></Link>
             <Link to="/signup"><li>Sign Up </li></Link>
             <Link to="/signin"><li>Sign In </li></Link>
             <Link to="/"><li onClick={this.handleSignOut.bind(this)}>Sign Out</li></Link>
           </ul>
           <div> {this.props.children}</div>
-
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <img src="images/cat3.jpg" alt="Cat" height="500"/>
+          <img src="images/white-dog.jpg" alt="Dog" height="450"/>
       </div>
     )
   }

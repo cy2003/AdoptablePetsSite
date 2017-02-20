@@ -8,6 +8,7 @@ import {applyMiddleware, createStore} from 'redux'
 import ReduxPromise from 'redux-promise'
 import { Provider } from 'react-redux'
 import {Router, browserHistory} from 'react-router'
+import { Button, Card, Row, Col } from 'react-materialize';
 
 
 const store = applyMiddleware(ReduxPromise)(createStore)(rootReducer)

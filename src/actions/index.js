@@ -82,9 +82,17 @@ export const showPets = function(){
   let response = axios.get(`/pets`).then((innerResponse) => {
     return innerResponse
   })
-  
+
   return {
     type: "PETS_SHOW",
+    payload: response
+  }
+}
+
+export const showOnePet = function(id){
+  let response = axios.get(`/pets/${id}`).then((innerResponse) =>{ return innerResponse})
+  return {
+    type: "SHOW_ONE_PET",
     payload: response
   }
 }
