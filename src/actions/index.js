@@ -78,13 +78,13 @@ export const showRescuePets = function(id){
 }
 
 export const showPets = function(){
-  
+
   let response = axios.get(`/pets`).then((innerResponse) => {
     return innerResponse
   })
-  debugger
+  
   return {
-    type: "PET_SHOW",
+    type: "PETS_SHOW",
     payload: response
   }
 }

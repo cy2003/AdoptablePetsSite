@@ -3,25 +3,25 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {showPets} from '../actions/index'
 
-class PetShow extends Component {
+class PetsShow extends Component {
   constructor(){
     super()
   }
 
 
   componentDidMount(){
-    debugger
     this.props.showPets()
   }
 
+
   render(){
 
-    debugger
+
     if (!this.props.pets) {
       return (<div>Loading...</div>)
     }
     else {
-      debugger
+      
       return (
         <div>
           <h3>Pets Available For Adoption</h3>
@@ -29,7 +29,7 @@ class PetShow extends Component {
             {this.props.pets.map((pet) => {
               return (
                 <div>
-                  <img src={`${pet.picture_url}`} height={400} width={400} />
+                  <img src={`${pet.picture_url}`} height={400} width={390} key={pet.id}/>
                   <div>Name: {pet.name}</div>
                   <div>Sex: {pet.sex}</div>
                   <div>Age: {pet.age}</div>
@@ -59,4 +59,4 @@ class PetShow extends Component {
 
 
 //mapStateToProps will be called every time the state changes
-export default connect(mapStateToProps, mapDispatchToProps)(PetShow)
+export default connect(mapStateToProps, mapDispatchToProps)(PetsShow)

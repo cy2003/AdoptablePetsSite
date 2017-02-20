@@ -1,7 +1,7 @@
-export default (state={}, action) => {
-  debugger
+export default (state=[], action) => {
+  
   switch (action.type) {
-    case "PET_SHOW":
+    case "PETS_SHOW":
       return action.payload.data
     default:
       return state

@@ -19,12 +19,12 @@ class RescueShow extends Component {
   handleSubmit(event){
     event.preventDefault()
     this.props.addPet( this.state.pet )
-    this.setState({pet: ''})
+    this.setState({pets: ''})
   }
 
   handleInputChange(event){
     this.setState({
-      pet: event.target.value
+      pets: event.target.value
     })
   }
 
@@ -43,7 +43,7 @@ class RescueShow extends Component {
               {this.props.rescue.pets.map((pet) => {
                 return (
                 <div>
-                  <img src={`${pet.picture_url}`} height={400} width={400} />
+                  <img src={`${pet.picture_url}`} height={400} width={370} />
                   <div>Name: {pet.name}</div>
                   <div>Sex: {pet.sex}</div>
                   <div>Age: {pet.age}</div>
