@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {showRescuePets} from '../actions/index'
+import {showOnePet} from '../actions/index'
 
 
 class RescueShow extends Component {
@@ -16,6 +17,10 @@ class RescueShow extends Component {
     this.props.showRescuePets(id)
   }
 
+  handleClick(id){
+    this.props.showOnePet(id)
+  }
+
   handleSubmit(event){
     event.preventDefault()
     this.props.addPet( this.state.pet )
@@ -27,7 +32,6 @@ class RescueShow extends Component {
       pets: event.target.value
     })
   }
-
 
   render(){
 
@@ -42,7 +46,7 @@ class RescueShow extends Component {
             <div>
               {this.props.rescue.pets.map((pet) => {
                 return (
-                <div>
+                <div key={pet.id} onClick={this.handleClick.bind(this, pet.id)}>
                   <img src={`${pet.picture_url}`} height={300}/>
                   <div>Name: {pet.name}</div>
                   <div>Sex: {pet.sex}</div>
@@ -65,17 +69,13 @@ class RescueShow extends Component {
     }
 }
 
-
-
   function mapStateToProps(state){
     return {rescue: state.rescue}
   }
 
   function mapDispatchToProps(dispatch){
-    return bindActionCreators({showRescuePets}, dispatch)
+    return bindActionCreators({showRescuePets, showOnePet}, dispatch)
   }
-
-
 
 // export default connect(null, mapDispatchToProps)(RescueShow)
 export default connect(mapStateToProps, mapDispatchToProps)(RescueShow)

@@ -11,6 +11,7 @@ import OnePetShow from './components/one_pet_show'
 import Pictures from './components/pictures_show'
 import DogsIndex from './components/dogs_index'
 import CatsIndex from './components/cats_index'
+import PostCreate from './components/post_create'
 
 //
 
@@ -25,6 +26,7 @@ export default(
     <Route path="pets/:id" component={OnePetShow}/>
     <Route path="dogs" component={DogsIndex}/>
     <Route path="cats" component={CatsIndex}/>
+    <Route path="pets/:id/posts/new" component={PostCreate}/>
   </Route>
 )
 

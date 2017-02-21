@@ -28,7 +28,7 @@ class PetsIndex extends Component {
 
       return (
         <div>
-          <h3>Pets Available For Adoption</h3>
+          <h4>Pets Available For Adoption</h4>
           <div>
             {this.props.pets.map((pet) => {
               return (

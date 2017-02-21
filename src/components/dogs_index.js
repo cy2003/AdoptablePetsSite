@@ -26,7 +26,7 @@ class DogsIndex extends Component {
 
       return (
         <div>
-          <h3>Dogs Available For Adoption</h3>
+          <h4>Dogs Available For Adoption</h4>
           <div>
             {this.props.pets.map((pet) => {
                 if (pet.pet_type === "dog") {

@@ -96,6 +96,26 @@ export const showOnePet = function(id){
   }
 }
 
+export const createPost = function(){
+  let response = axios.get(`/posts`).then((innerResponse) => {
+    browserHistory.push(`/posts`)
+    return innerResponse })
+  return {
+    type: "POST_SHOW",
+    payload: response
+  }
+}
+
+export const fetchUser = function(){
+  let response = axios.get('/current_user').then((innerResponse) => {
+    return innerResponse
+  })
+  return {
+    type: "FETCH_USER",
+    payload: response
+  }
+}
+
 
 
 // export const createNewPet = function(){
