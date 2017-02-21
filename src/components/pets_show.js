@@ -25,16 +25,16 @@ class PetsShow extends Component {
       return (<div>Loading...</div>)
     }
     else {
-
+      
       return (
         <div>
           <h3>Pets Available For Adoption</h3>
           <div>
             {this.props.pets.map((pet) => {
               return (
-                <div key={pet.id}>
-                  <img src={`${pet.picture_url}`} height={300} onClick={this.handleClick.bind(this, pet.id)}/>
-                  <div>Meet {pet.name}</div>
+                <div key={pet.id} onClick={this.handleClick.bind(this, pet.id)}>
+                  <img src={`${pet.picture_url}`} height={300} />
+                  <h5>{pet.name}</h5>
                   <div>Sex: {pet.sex}</div>
                   <br></br>
                   <br></br>

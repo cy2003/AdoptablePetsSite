@@ -1,7 +1,6 @@
 export default (state=[], action) => {
-
   switch (action.type) {
-    case "PETS_SHOW":
+    case "SHOW_ONE_PET":
       return action.payload.data
     default:
       return state

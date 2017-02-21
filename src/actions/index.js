@@ -38,7 +38,6 @@ export const signinUser = (user) => {
     var id = innerResponse.data.user
     var rescue_id = innerResponse.data.rescue_id
     var adopter_id = innerResponse.data.adopter_id
-    debugger
     if (innerResponse.data.is_rescue === true){
       browserHistory.push(`/rescues/${rescue_id}`)
       return innerResponse
@@ -70,7 +69,6 @@ export const showRescuePets = function(id){
   let response = axios.get(`/rescues/${id}`).then((innerResponse) => {
     return innerResponse
   })
-
   return {
     type: "RESCUE_SHOW",
     payload: response
@@ -78,11 +76,9 @@ export const showRescuePets = function(id){
 }
 
 export const showPets = function(){
-
   let response = axios.get(`/pets`).then((innerResponse) => {
     return innerResponse
   })
-
   return {
     type: "PETS_SHOW",
     payload: response
@@ -90,7 +86,10 @@ export const showPets = function(){
 }
 
 export const showOnePet = function(id){
-  let response = axios.get(`/pets/${id}`).then((innerResponse) =>{ return innerResponse})
+  
+  let response = axios.get(`/pets/${id}`).then((innerResponse) =>{
+    browserHistory.push(`/pets/${id}`)
+    return innerResponse})
   return {
     type: "SHOW_ONE_PET",
     payload: response
