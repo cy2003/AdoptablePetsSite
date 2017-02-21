@@ -17,7 +17,7 @@ class OnePetShow extends Component {
       }
       else {
         return(
-          <div>
+          <div key={this.props.pet.id}>
             <br></br>
             <br></br>
             <img src={`${this.props.pet.picture_url}`} height={300}/>
@@ -25,14 +25,12 @@ class OnePetShow extends Component {
             <h5>Sex: {this.props.pet.sex}</h5>
             <h5>Breed: {this.props.pet.breed}</h5>
             <h5>Bio:  {this.props.pet.bio}</h5>
-            <h5>Rescue Group:{this.props.pet.rescue}</h5>
+            <h5>Rescue Group: </h5>
           </div>
         )
       }
   }
 }
-
-
 
 
   function mapStateToProps(state){
