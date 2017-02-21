@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {showDogs} from '../actions/index'
+import {showPets} from '../actions/index'
 import {showOnePet} from '../actions/index'
 
-class DogsShow extends Component {
+class CatsIndex extends Component {
   constructor(){
     super()
   }
@@ -26,18 +26,20 @@ class DogsShow extends Component {
 
       return (
         <div>
-          <h3>Dogs Available For Adoption</h3>
+          <h3>Cats Available For Adoption</h3>
           <div>
             {this.props.pets.map((pet) => {
-              return (
-                <div key={pet.id} onClick={this.handleClick.bind(this, pet.id)}>
-                  <img src={`${pet.picture_url}`} height={300} />
-                  <h5>{pet.name}</h5>
-                  <div>Sex: {pet.sex}</div>
-                  <br></br>
-                  <br></br>
-                </div>
-              )
+                if (pet.pet_type === "cat") {
+                  return (
+                    <div key={pet.id} onClick={this.handleClick.bind(this, pet.id)}>
+                      <img src={`${pet.picture_url}`} height={300} />
+                      <h5>{pet.name}</h5>
+                      <div>Sex: {pet.sex}</div>
+                      <br></br>
+                      <br></br>
+                    </div>
+                  )
+                }
             })}
           </div>
         </div>
@@ -53,8 +55,8 @@ class DogsShow extends Component {
 //'pet:' is the name of the prop
 
   function mapDispatchToProps(dispatch){
-    return bindActionCreators({showDogs, showOnePet}, dispatch)
+    return bindActionCreators({showPets, showOnePet}, dispatch)
   }
 
 //mapStateToProps will be called every time the state changes
-export default connect(mapStateToProps, mapDispatchToProps)(DogsShow)
+export default connect(mapStateToProps, mapDispatchToProps)(CatsIndex)

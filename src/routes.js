@@ -6,9 +6,11 @@ import UserSignIn from './components/user_sign_in'
 import RescueSignUp from './components/rescue_sign_up'
 import Auth from './auth/authenticator'
 import RescueShow from './components/rescue_show'
-import PetsShow from './components/pets_show'
+import PetsIndex from './components/pets_index'
 import OnePetShow from './components/one_pet_show'
 import Pictures from './components/pictures_show'
+import DogsIndex from './components/dogs_index'
+import CatsIndex from './components/cats_index'
 
 //
 
@@ -19,8 +21,10 @@ export default(
     <Route path="signin" component={UserSignIn}/>
     <Route path="rescue_sign_up" component={RescueSignUp}/>
     <Route path="rescues/:id" component={RescueShow}/>
-    <Route path="pets" component={PetsShow}/>
+    <Route path="pets" component={PetsIndex}/>
     <Route path="pets/:id" component={OnePetShow}/>
+    <Route path="dogs" component={DogsIndex}/>
+    <Route path="cats" component={CatsIndex}/>
   </Route>
 )
 

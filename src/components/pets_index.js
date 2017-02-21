@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {showPets} from '../actions/index'
 import {showOnePet} from '../actions/index'
 
-class PetsShow extends Component {
+class PetsIndex extends Component {
   constructor(){
     super()
   }
@@ -25,7 +25,7 @@ class PetsShow extends Component {
       return (<div>Loading...</div>)
     }
     else {
-      
+
       return (
         <div>
           <h3>Pets Available For Adoption</h3>
@@ -62,4 +62,4 @@ class PetsShow extends Component {
 
 
 //mapStateToProps will be called every time the state changes
-export default connect(mapStateToProps, mapDispatchToProps)(PetsShow)
+export default connect(mapStateToProps, mapDispatchToProps)(PetsIndex)
