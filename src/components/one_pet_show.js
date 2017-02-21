@@ -11,8 +11,8 @@ class OnePetShow extends Component {
   }
 
   render(){
-
-      if (!this.props.pet){
+    console.log(this.props.pet)
+      if (!this.props.pet || !this.props.pet.rescue ){
         return (<div>Loading...</div>)
       }
       else {
@@ -25,7 +25,8 @@ class OnePetShow extends Component {
             <h5>Sex: {this.props.pet.sex}</h5>
             <h5>Breed: {this.props.pet.breed}</h5>
             <h5>Bio:  {this.props.pet.bio}</h5>
-            <h5>Rescue Group: </h5>
+            <h5>Rescue Group: {this.props.pet.rescue.organization_name}</h5>
+            <h5>Rescue Website: {this.props.pet.rescue.website}</h5>
           </div>
         )
       }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router'
+import { Route, IndexRoute } from 'react-router'
 import App from './components/App'
 import UserSignUp from './components/user_sign_up'
 import UserSignIn from './components/user_sign_in'
@@ -8,10 +8,13 @@ import Auth from './auth/authenticator'
 import RescueShow from './components/rescue_show'
 import PetsShow from './components/pets_show'
 import OnePetShow from './components/one_pet_show'
+import Pictures from './components/pictures_show'
 
+//
 
 export default(
   <Route path="/" component={App}>
+    <IndexRoute component={Pictures}/>
     <Route path="signup" component={UserSignUp}/>
     <Route path="signin" component={UserSignIn}/>
     <Route path="rescue_sign_up" component={RescueSignUp}/>

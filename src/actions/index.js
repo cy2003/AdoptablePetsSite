@@ -86,7 +86,7 @@ export const showPets = function(){
 }
 
 export const showOnePet = function(id){
-  
+
   let response = axios.get(`/pets/${id}`).then((innerResponse) =>{
     browserHistory.push(`/pets/${id}`)
     return innerResponse})
@@ -95,6 +95,8 @@ export const showOnePet = function(id){
     payload: response
   }
 }
+
+
 
 // export const createNewPet = function(){
 //   let response = axios.get(`/rescues/`)
