@@ -27,6 +27,7 @@ export default(
     <Route path="dogs" component={DogsIndex}/>
     <Route path="cats" component={CatsIndex}/>
     <Route path="pets/:id/posts/new" component={PostCreate}/>
+    <Route path="pets/:id/posts/show" component={OnePetShow}/>
   </Route>
 )
 
