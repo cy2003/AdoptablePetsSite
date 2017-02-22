@@ -96,9 +96,12 @@ export const showOnePet = function(id){
   }
 }
 
-export const createPost = function(){
-  let response = axios.get(`/posts`).then((innerResponse) => {
-    browserHistory.push(`/posts`)
+export const createPost = function(post){
+  //need to pass the post params
+
+  let response = axios.post(`/posts`, post).then((innerResponse) => {
+    var id = innerResponse.data.pet_id
+    browserHistory.push(`/pets/${id}`)
     return innerResponse })
   return {
     type: "POST_SHOW",

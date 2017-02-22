@@ -12,21 +12,25 @@ class PostCreate extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    const post = {description: this.refs.description.value}
+    const post = {date: this.refs.date.value, description: this.refs.description.value, pet_id: this.refs.pet_id.value}
     this.props.createPost(post)
     //tell what action to take in action/index.js
   }
 
   render(){
-    console.log(this.props.pet)
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <h5>Create New Post</h5>
           <h6>for</h6>
-
+          <h5>{this.props.pet.name}</h5>
+          <img src={`${this.props.pet.picture_url}`} height={200}/>
+          <input type="date" ref="date" placeholder="Enter date" />
           <input ref="description" placeholder="Enter description" />
+          <input type="hidden" ref="pet_id" value={this.props.pet.id}/>
           <button type="submit">Submit</button>
+
         </form>
       </div>
     )
@@ -41,4 +45,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({createPost}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(PostCreate)
+export default connect(mapStateToProps, mapDispatchToProps)(PostCreate)
