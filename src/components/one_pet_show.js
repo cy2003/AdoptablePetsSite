@@ -16,6 +16,7 @@ class OnePetShow extends Component {
   }
 
   render(){
+      console.log(this.props.post)
       if (!this.props.pet || !this.props.pet.rescue ){
         return (<div>Loading...</div>)
       }
@@ -32,6 +33,11 @@ class OnePetShow extends Component {
               <h5>Bio:  {this.props.pet.bio}</h5>
               <h5>Rescue Group: {this.props.pet.rescue.organization_name}</h5>
               <h5>Rescue Website: {this.props.pet.rescue.website}</h5>
+              <br></br>
+              <br></br>
+              <h5>Posts:</h5>
+
+              <h5>{this.props.post.description}</h5>
 
               <br></br>
               <br></br>
@@ -53,7 +59,8 @@ class OnePetShow extends Component {
               <br></br>
               <br></br>
               <h5>Posts:</h5>
-              <h5>{this.props.post}</h5>
+
+              <h5>{this.props.post.description}</h5>
               <Link to={`/pets/${this.props.pet.id}/posts/new`}><h5>Create New Post</h5></Link>
             </div>
           )

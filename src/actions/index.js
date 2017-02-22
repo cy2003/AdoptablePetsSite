@@ -100,7 +100,7 @@ export const createPost = function(post){
   //need to pass the post params
 
   let response = axios.post(`/posts`, post).then((innerResponse) => {
-    var id = innerResponse.data.pet_id
+    var id = innerResponse.data.post.pet_id
     browserHistory.push(`/pets/${id}`)
     return innerResponse })
   return {
