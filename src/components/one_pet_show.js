@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {showOnePet} from '../actions/index'
+import {showOnePet, fetchPosts} from '../actions/index'
 import {Link} from 'react-router'
 
 class OnePetShow extends Component {
@@ -13,10 +13,11 @@ class OnePetShow extends Component {
   componentDidMount(){
     const id = parseInt(this.props.params.id)
     this.props.showOnePet(id)
+    this.props.fetchPosts()
   }
 
   render(){
-      console.log(this.props.post)
+
       if (!this.props.pet || !this.props.pet.rescue ){
         return (<div>Loading...</div>)
       }
@@ -36,9 +37,7 @@ class OnePetShow extends Component {
               <br></br>
               <br></br>
               <h5>Posts:</h5>
-
               <h5>{this.props.post.description}</h5>
-
               <br></br>
               <br></br>
             </div>
@@ -60,7 +59,9 @@ class OnePetShow extends Component {
               <br></br>
               <h5>Posts:</h5>
 
-              <h5>{this.props.post.description}</h5>
+              <ul>{this.props.post.map(function(post){
+                return <li>{post.description}</li>
+              })}</ul>
               <Link to={`/pets/${this.props.pet.id}/posts/new`}><h5>Create New Post</h5></Link>
             </div>
           )
@@ -72,11 +73,15 @@ class OnePetShow extends Component {
 
 
   function mapStateToProps(state){
-    return {pet: state.pet, rescue: state.rescue, post: state.post}
+    function findPetPost(post){
+      return post.pet_id === state.pet.id
+    }
+
+    return {pet: state.pet, rescue: state.rescue, post: state.post.filter(findPetPost)}
   }
 
   function mapDispatchToProps(dispatch){
-    return bindActionCreators({showOnePet}, dispatch)
+    return bindActionCreators({showOnePet, fetchPosts}, dispatch)
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OnePetShow)

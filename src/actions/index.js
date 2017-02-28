@@ -102,6 +102,7 @@ export const createPost = function(post){
   let response = axios.post(`/posts`, post).then((innerResponse) => {
     var id = innerResponse.data.post.pet_id
     browserHistory.push(`/pets/${id}`)
+
     return innerResponse })
   return {
     type: "POST_SHOW",
@@ -118,6 +119,17 @@ export const fetchUser = function(){
     payload: response
   }
 }
+
+export const fetchPosts = function(){
+  let response = axios.get('/posts').then((innerResponse) => {
+    return innerResponse
+  })
+  return {
+    type: "FETCH_POSTS",
+    payload: response
+  }
+}
+
 
 
 
