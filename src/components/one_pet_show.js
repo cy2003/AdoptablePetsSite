@@ -37,7 +37,9 @@ class OnePetShow extends Component {
               <br></br>
               <br></br>
               <h5>Posts:</h5>
-              <h5>{this.props.post.description}</h5>
+              <ul>{this.props.post.map(function(post){
+                return <li>{post.description}</li>
+              })}</ul>
               <br></br>
               <br></br>
             </div>
@@ -58,7 +60,6 @@ class OnePetShow extends Component {
               <br></br>
               <br></br>
               <h5>Posts:</h5>
-
               <ul>{this.props.post.map(function(post){
                 return <li>{post.description}</li>
               })}</ul>
