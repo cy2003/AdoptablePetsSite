@@ -5,27 +5,37 @@ axios.defaults.baseURL = 'http://localhost:3000/api/v1'
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 //user = Object{name: "cathy", email: "cathy", password: "1234", password_confirmation: "1234", checkbox: true}
-export const createUser = (user) => {
-  // user is an object that contains all the form's information
-  let response = axios.post('signup', user).then((innerResponse) => {
-    //.then does not run until rails finishes
-    //innerResponse is an object that contains the jwt key
-    //innerResponse.data.rescue => true or false
-    sessionStorage.setItem('jwt', innerResponse.data.jwt)
-    axios.defaults.headers.common['AUTHORIZATION'] = innerResponse.data.jwt
 
-    if (innerResponse.data.rescue === true){
-      browserHistory.push('/rescue_sign_up')
-      return innerResponse
-    }
-    else {
-      browserHistory.push(`/pets`)
-      return innerResponse
-    }
-  })
+const authenticatingUser = () => {
   return {
-    type: "SIGN_UP",
-    payload: response
+    type: "AUTHENTICATING_USER"
+  }
+}
+
+export const createUser = (user) => {
+  return (dispatch) => {
+    dispatch(authenticatingUser())
+    return axios.post('signup', user)
+      .then((response) => {
+        //.then does not run until rails finishes
+        //innerResponse is an object that contains the jwt key
+        //innerResponse.data.rescue => true or false
+        sessionStorage.setItem('jwt', response.data.jwt)
+        axios.defaults.headers.common['AUTHORIZATION'] = response.data.jwt
+
+        browserHistory.push(`/pets`)
+        dispatch({ type: "AUTHENTICATION_SUCCES" }) // <- Auth Reducer
+        return dispatch({
+          type: "SUCCESSFUL_SIGNUP",
+          payload: response.data.user
+        }) // <- CurrentUser Reducer
+      })
+      .catch(error => {
+        return dispatch({
+          type: "UNSUCCESSFUL_SIGNUP",
+          payload: error
+        })
+      })
   }
 }
 
@@ -129,9 +139,6 @@ export const fetchPosts = function(){
     payload: response
   }
 }
-
-
-
 
 // export const createNewPet = function(){
 //   let response = axios.get(`/rescues/`)

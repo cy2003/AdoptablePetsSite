@@ -19,13 +19,10 @@ class UserSignUp extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <h5>Please Enter Name</h5>
+          <h5>Sign Up</h5>
           <input ref="name" placeholder="Enter Name" />
-          <h5>Please Enter Email</h5>
           <input ref="email" placeholder="Enter Email" />
-          <h5>Please enter password</h5>
           <input type="password" ref="userPassword"  placeholder="Enter Password" />
-          <h5>Please confirm password</h5>
           <input type="password" ref="passwordConfirmation"  placeholder="Confirm Password" />
           <h5>Please check the box if you're a rescue organization</h5><input ref="rescue" type="checkbox"/>
           <br></br>

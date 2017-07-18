@@ -12,3 +12,22 @@ export default combineReducers({
   pet: petReducer,
   post: postReducer
 })
+
+/*
+{
+  pets: [
+    {}
+  ],
+  auth: {
+    isAuthenticated: Bool,
+    isAuthenticating: Bool,
+    currentUser: {
+      id: Int,
+      username: string,
+      email: string,
+      don't include /jwt token - or password
+    }
+  },
+
+}
+*/
